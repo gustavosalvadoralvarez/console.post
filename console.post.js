@@ -1,11 +1,16 @@
 (function consolePost(document) {
-  var scripts, webcompRE, imports, toastRE, linkEl;
+  var scripts, webcompRE, imports, paperToastRE, linkEl;
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // LOAD WEBCOMPONENTS.JS IF NECESSARY
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   scripts = document.querySelectorAll('script');
   webcompRE = /(webcomponents)(-lite)?(\.js)/gi;
-  // LOAD WEBCOMPONENTS IF NECESSARY
   if (!scripts.reduce(function(acc, v) {
       return acc || webcompRE.test(v.getAttribute('href'));
-    }, false)) { // COPY/PASTED IN TO AVOID NETWORK LATENCY OVERHEAD WHEN POSSIBLE
+    }, false)) {
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // COPY PASTED TO SAVE NETWORK LATENCY IF POSSIBLE (ITS NOT VERY BIG MINIFIED, FOR DEV IT ENDS ON LINE 5778)
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * @license
      * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
@@ -5771,18 +5776,22 @@
         window.Platform = e
       }(window.WebComponents);
   }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // LOAD PAPER TOAST IF NECESSARY
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   imports = document.querySelectorAll('link[rel="import"]');
-  toastRE = /paper-toast\.html/gi;
+  paperToastRE = /paper-toast\.html/gi;
   if (!imports.reduce(function(acc, v) {
-      return acc || toastRE.test(v.getAttribute("href"));
+      return acc || paperToastRE.test(v.getAttribute("href"));
     }, false)) {
     linkEl = document.createElement("link");
-    linkEl.setAttribute('rel', "import");
-    linkEl.setAttribute('href',
-      "./bower_components/paper-toast/paper-toast.html");
-    document.querySelector('head').appendChild(linkEl);
+    linkEl.rel = "import";
+    linkEl.href = "./bower_components/paper-toast/paper-toast.html";
+    document.head.appendChild(linkEl);
   }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // LISTEN FOR WEB COMPONENTS READY TO CHANGE PROTOTYPE (COULD DO IT BEFORE WITHIN A CLOSE THAT SETS UP A CACHE IS MSGS ARE POSTED BEFORE??)
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   window.addEventListener('WebComponentsReady', function() {
     window.console.prototype.post = function(str, duration) {
       var toastEl;
