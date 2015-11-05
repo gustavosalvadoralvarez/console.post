@@ -1,0 +1,27 @@
+{
+  "name": "console.post",
+  "description": "Extends native console object with a post method implementing polymer paper-toast",
+  "main": "console.post.js",
+  "authors": [
+    "GSA; kleineaugen"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "console",
+    "post",
+    "awsome",
+    "such",
+    "great"
+  ],
+  "homepage": "https://github.com/gustavosalvadoralvarez/console.post",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
