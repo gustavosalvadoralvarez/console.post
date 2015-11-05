@@ -1,0 +1,26 @@
+{
+  "name": "console.post",
+  "version": "1.0.0",
+  "description": "Extends native console object with a post method implementing polymer paper-toast",
+  "main": "console.post.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gustavosalvadoralvarez/console.post.git"
+  },
+  "keywords": [
+    "console",
+    "post",
+    "awsome",
+    "such",
+    "great"
+  ],
+  "author": "GSA; kleineaugen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gustavosalvadoralvarez/console.post/issues"
+  },
+  "homepage": "https://github.com/gustavosalvadoralvarez/console.post"
+}
